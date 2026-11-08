@@ -163,6 +163,10 @@ onUnload(()=>{
 	uni.removeStorageSync("storgClassList",classList.value);	
 })
 
+// 暴露给自动化测试调用
+defineExpose({
+	onSearch
+})
 
 </script>
 
