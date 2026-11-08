@@ -8,7 +8,7 @@
 npm install
 
 # 开发
-npm run dev:h5          # H5，默认 http://localhost:5173
+npm run dev:h5          # H5，默认 http://localhost:5173/xxmwall/
 npm run dev:mp-weixin   # 微信小程序，产物在 dist/dev/mp-weixin
 npm run dev:app         # App，产物在 dist/dev/app
 
@@ -58,7 +58,8 @@ HEADLESS=false npm run test:h5   # 想看浏览器操作时（Windows 用 cross-
 - 测试文件：`src/**/*.test.js`，通常与页面同级。
 - 测试运行器是 Jest 27，驱动层是 `@dcloudio/uni-automator`。
 - `program` 是 automator 注入的全局对象，不需要 import。
-- H5 测试通过 `h5.url` 复用 `npm run dev:h5` 启动的服务，`test:h5` 已用 `start-server-and-test` 串起来。
+- H5 测试通过 `h5.url` 复用 `npm run dev:h5` 启动的服务，地址是 `http://localhost:5173/xxmwall/`（对应 `manifest.json` 的 `h5.router.base`），`test:h5` 已用 `start-server-and-test` 串起来。
+- `test:h5` 实际启动的是 `dev:h5:test`（带 `--autoPort 9520 --autoHost localhost`），这样 H5 页面会注入 automator 运行时并连回测试进程；手动 `dev:h5` 不带这个参数，只用于正常开发。
 - 浏览器优先使用本机 Chrome；可用 `CHROME_PATH` 指定其它 Chromium。
 - 选择器优先用唯一的 class，避免依赖父子选择器（微信小程序不支持）。
 - 自定义组件内部元素要先 `page.$('组件')`，再在组件上 `.$()`。

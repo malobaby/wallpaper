@@ -5,13 +5,14 @@
   "description": "咸虾米壁纸 - uni-app CLI 工程",
   "scripts": {
     "dev:h5": "uni",
+    "dev:h5:test": "uni --autoPort 9520 --autoHost localhost",
     "dev:mp-weixin": "uni -p mp-weixin",
     "dev:app": "uni -p app",
     "build:h5": "uni build",
     "build:mp-weixin": "uni build -p mp-weixin",
     "build:app": "uni build -p app",
     "test": "npm run test:h5",
-    "test:h5": "start-server-and-test dev:h5 http://localhost:5173 test:jest:h5",
+    "test:h5": "start-server-and-test dev:h5:test http://localhost:5173/xxmwall/ test:jest:h5",
     "test:jest:h5": "cross-env UNI_PLATFORM=h5 jest -i",
     "test:mp-weixin": "cross-env UNI_PLATFORM=mp-weixin jest -i"
   },

@@ -10,9 +10,11 @@ module.exports = {
   globalTeardown: '@dcloudio/uni-automator/dist/teardown.js',
   testEnvironment: '@dcloudio/uni-automator/dist/environment.js',
   testEnvironmentOptions: {
+    // automator 的 WebSocket 端口，必须和 dev:h5:test 的 --autoPort 一致
+    port: 9520,
     // h5.url 指向已经启动的 dev server；有 url 时 automator 会跳过编译
     h5: {
-      url: 'http://localhost:5173/',
+      url: 'http://localhost:5173/xxmwall/',
       options: {
         // 默认无头模式，适合 CI 和 AI 自动跑；想看浏览器操作时设置 HEADLESS=false
         headless: process.env.HEADLESS !== 'false',
